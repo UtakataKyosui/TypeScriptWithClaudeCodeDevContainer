@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  claude-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      - ~/.anthropic:/home/vscode/.anthropic:ro
+      - ${OBSIDIAN_VAULT_PATH:-./obsidian-vault}:/workspace/obsidian-vault
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: /workspace
+    env_file:
+      - ./.env
+    ports:
+      - "3000:3000"
+      - "8000:8000"
+    command: sleep infinity
+    user: vscode

@@ -1,0 +1,41 @@
+{
+  "mcpServers": {
+    "mcp-obsidian": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "mcp-obsidian",
+        "--config",
+        "{\"vaultPath\":\"/workspace/obsidian-vault\"}"
+      ]
+    },
+    "file-system": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/workspace"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+	"fetch": {
+		"command": "uvx",
+		"args": ["mcp-server-fetch"]
+	},
+	"playwright": {
+		"command": "npx",
+		"args": ["-y", "@executeautomation/playwright-mcp-server"]
+	}
+  }
+}
